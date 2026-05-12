@@ -55,22 +55,25 @@ def main():
     print("========== Attack Stage!!! ==========")
     attack = TestingAttack(derivedKey, serialNumber, hsm.masterKey)
     print("Hackers are trying to infiltrate IoT Devices! Seems like their using leaked credentials.")
+    
     print()
 
-    time.sleep(5)
+    time.sleep(15)
     print("It attacks a device that has default credential with password 'admin123'")
     print("Hacker attacks...")
     attack.attackDefault()
+    time.sleep(15)
     print()
 
     print("They are attacking our device again. They know it involves serial numbers and SHA256 hash function, but not the HMAC nor master key")
     attack.attackDerivedKeySHA256()
-    time.sleep(10)
+    time.sleep(15)
     print()
 
     print("The hackers are attacking once again. but they got a list of serial numbers and the master key (worst case scenario)")
     attack.attackDerivedKeyMK(derivedKey, hsm.masterKey, serialNumber)
-    time.sleep(20)
+    time.sleep(25)
+    print()
 
     print("========== Onboarding/Force User Credential Stage ==========")
     companionApp = CompanionApp(backend, iotDevice)
@@ -93,9 +96,9 @@ def main():
     print()
 
     print("Creating layered key using user's credential...")
-    time.sleep(3)
     layeredKey = companionApp.generateLayeredKey(derivedKey, userCredential)
     print("Layered key created.")
+    print(f"Layerd Key: {layeredKey.hex()}")
     print()
 
     print("Now finishing the onboarding process...")

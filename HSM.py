@@ -32,33 +32,33 @@ class HSM:
         print("Manufacturer makes last minute fixes...")
         return self.generateDerivedKey(serialNumber)
     
-if __name__ == "__main__":
-    hsm = HSM()
+# if __name__ == "__main__":
+#     hsm = HSM()
 
-    masterKey = hsm.generateMasterKey()
+#     masterKey = hsm.generateMasterKey()
 
-    print(f"Master key: {masterKey.hex()}")
-    print(f"Master key: {len(masterKey)}")
+#     print(f"Master key: {masterKey.hex()}")
+#     print(f"Master key: {len(masterKey)}")
     
 
-    serialNumber = "SN001"
+#     serialNumber = "SN001"
 
-    print(serialNumber)
-    derivedKey = hsm.generateDerivedKey(serialNumber)
+#     print(serialNumber)
+#     derivedKey = hsm.generateDerivedKey(serialNumber)
 
-    print(f"Derived Key: {derivedKey.hex()}")
-    print(f"Master key: {len(derivedKey)} bytes")
+#     print(f"Derived Key: {derivedKey.hex()}")
+#     print(f"Master key: {len(derivedKey)} bytes")
 
-    user = input("Enter serial number: ")
+#     user = input("Enter serial number: ")
 
-    recomputed = hsm.recomputeKey(user, derivedKey)
-    print(f"Derived Key: {recomputed.hex()}")
-    print(f"Master key: {len(recomputed)} bytes")
+#     recomputed = hsm.recomputeKey(user, derivedKey)
+#     print(f"Derived Key: {recomputed.hex()}")
+#     print(f"Master key: {len(recomputed)} bytes")
 
-    if derivedKey == recomputed:
-        print("yes")
-    else:
-        print("no")
+#     if derivedKey == recomputed:
+#         print("yes")
+#     else:
+#         print("no")
 
 
 
